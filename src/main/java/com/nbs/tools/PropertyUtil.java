@@ -40,4 +40,22 @@ public class PropertyUtil {
             return null;
         }
     }
+
+    /**
+     *
+     * @param key
+     * @param defValue
+     * @return
+     */
+    public static String getProperty(String key,String defValue){
+        String v = getProperty(key);
+        return v == null ? defValue : v;
+    }
+
+    /**
+     * 配置参数
+     */
+    public static final String PKUI_PANEL_STATUS_LABEL = "nbs.ui.panel.status.label";
+    public static final String PKUI_PANEL_ABOUT_LABEL = "nbs.ui.panel.about.label";
+
 }

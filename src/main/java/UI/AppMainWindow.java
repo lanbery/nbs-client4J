@@ -1,9 +1,6 @@
 package UI;
 
-import UI.panel.ConsolePanel;
-import UI.panel.SettingPanel;
-import UI.panel.StatusPanel;
-import UI.panel.ToolBarPanel;
+import UI.panel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,6 +48,27 @@ public class AppMainWindow {
      *
      */
     public static SettingPanel settingPanel;
+    /**
+     * 关于面板
+     */
+    public static AboutPanel aboutPanel;
+
+    public static void main(String[] args){
+        EventQueue.invokeLater(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            AppMainWindow window = new AppMainWindow();
+                            window.frame.setVisible(true);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+        );
+    }
 
 
     /**
@@ -88,24 +106,37 @@ public class AppMainWindow {
         frame.setIconImage(ConstantsUI.IMAGE_ICON);
         frame.setBackground(ConstantsUI.MAIN_BACK_COLOR);
 
+        //主要窗口
         mainPanel = new JPanel(true);
         mainPanel.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         mainPanel.setLayout(new BorderLayout());
 
-        //
+        //工具栏
         ToolBarPanel toolbar = new ToolBarPanel();
         statusPanel = new StatusPanel();
 
+        //初始化 面板
+        aboutPanel = new AboutPanel();
+        //TODO other panel init
+
+
+
+        //设置左侧菜单栏位
         mainPanel.add(toolbar,BorderLayout.WEST);
 
+        /**
+         * 设置中部内容显示面板
+         * 默认 status
+         */
         mainPanelCenter = new JPanel(true);
         mainPanelCenter.setLayout(new BorderLayout());
         mainPanelCenter.add(statusPanel,BorderLayout.CENTER);
 
         mainPanel.add(mainPanelCenter,BorderLayout.CENTER);
-
         //
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.add(mainPanel);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         logger.info("NBS initialized ...");
     }
 }

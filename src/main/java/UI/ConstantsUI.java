@@ -2,6 +2,7 @@ package UI;
 
 import com.nbs.tools.PropertyUtil;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -25,24 +26,48 @@ public class ConstantsUI {
     public final static int MAIN_WINDOW_Y = 100;
     public final static int MAIN_WINDOW_WIDTH = 885;
     public final static int MAIN_WINDOW_HEIGHT = 636;
+
+    /**
+     * data 默认路径
+     */
+    public final static String NBS_PATH_DEF = "nbs";
     /**
      * 系统当前路径
      */
     public final static String CURRENT_DIR = System.getProperty("user.dir");
 
     /**
-     * 图标
+     * 主图标
      */
     public final static Image IMAGE_ICON = Toolkit.getDefaultToolkit()
             .getImage(AppMainWindow.class.getResource("/icon/nbs64.png"));
     /**
-     *
+     * NBS logo
+     */
+    public final static ImageIcon NBS_ICON =  new ImageIcon(
+            AppMainWindow.class.getResource("/icon/logo.png"));
+    /**
+     * 主窗口背景
      */
     public final static Color MAIN_BACK_COLOR = Color.WHITE;
     /**
-     *
+     * 工具栏背景
      */
-    public final static Color TOOL_BAR_BACK_COLOR = new Color(37,174,96);
+    public final static Color TOOL_BAR_BACK_COLOR = new Color(37, 174, 96);
+
+    /**
+     * 窗口Title 字体颜色
+     */
+    public final static Color PANEL_TITILE_COLOR = new Color(58,136,202);
+    /**
+     * 表格线条背景色
+     */
+    public final static Color TABLE_LINE_COLOR = new Color(229, 229, 229);
+
+    /**
+     * label 字体颜色
+     */
+    public final static Color NORMAL_FONT_COLOR = new Color(107,107,107);
 
     /**
      * @Date    : 2018/6/13 15:19
@@ -53,10 +78,71 @@ public class ConstantsUI {
      * </p>
      */
     public final static Font FONT_TITLE = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,27);
+    public final static Font FONT_SUB_TITLE = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,20);
     public final static Font FONT_NORMAL = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,13);
     public final static Font FONT_RADIO = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,15);
+    /**
+     *
+     */
+    public final static Font FONT_CPR = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,18);
 
+    /**
+     * 图标定义
+     */
+    //状态
+    public final static ImageIcon ICON_STATUS = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/status.png"));
+    public final static ImageIcon ICON_STATUS_ENABLED = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/status_enabled.png"));
 
+    public final static ImageIcon ICON_FILE = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/data.png"));
+    public final static ImageIcon ICON_FILE_ENABLED = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/data_enabled.png"));
 
+    public final static ImageIcon ICON_IM = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/im.png"));
+    public final static ImageIcon ICON_IM_ENABLED = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/im_enabled.png"));
 
+    //设置
+    public final static ImageIcon ICON_SETTING = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/setting.png"));
+    public final static ImageIcon ICON_SETTING_ENABLED = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/setting_enabled.png"));
+    public final static ImageIcon ICON_SETTING_DISABLED = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/setting.png"));
+
+    //About
+    public final static ImageIcon ICON_ABOUT = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/about.png"));
+    public final static ImageIcon ICON_ABOUT_ENABLED = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/about_enabled.png"));
+
+    //button icon
+    /**
+     * check version
+     */
+    public final static ImageIcon ICON_CHECK = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/checkversion.png"));
+    public final static ImageIcon ICON_CHECK_ENABLED = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/checkversion_enabled.png"));
+    public final static ImageIcon ICON_CHECK_DISABLED = new ImageIcon(
+            AppMainWindow.class.getResource("/icon/checkversion_disabled.png"));
+
+    /**
+     * 样式布局相关
+     */
+    // 主面板水平间隔
+    public final static int MAIN_H_GAP = 25;
+    // 主面板Label 大小
+    public final static Dimension LABLE_SIZE = new Dimension(1300, 30);
+    // Item Label 大小
+    public final static Dimension LABLE_SIZE_ITEM = new Dimension(78, 30);
+    // Item text field 大小
+    public final static Dimension TEXT_FIELD_SIZE_ITEM = new Dimension(400, 24);
+    // radio 大小
+    public final static Dimension RADIO_SIZE = new Dimension(1300, 60);
+    // 高级选项面板Item 大小
+    public final static Dimension PANEL_ITEM_SIZE = new Dimension(1300, 40);
 }
