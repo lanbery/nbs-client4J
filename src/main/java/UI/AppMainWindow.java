@@ -1,6 +1,11 @@
 package UI;
 
 import UI.panel.*;
+import UI.panel.about.AboutPanel;
+import UI.panel.fm.FilePanel;
+import UI.panel.im.IMPanel;
+import UI.panel.monitor.ConsolePanel;
+import UI.panel.setting.SettingPanel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,22 +33,26 @@ public class AppMainWindow {
 
     private JFrame frame;
     /**
-     *
+     * 主窗口
      */
     private static JPanel mainPanel;
     /**
-     *
+     * 内容窗口
      */
     public static  JPanel mainPanelCenter;
     /**
-     *
+     * 状态窗口
      */
     public static StatusPanel statusPanel;
+
+    public static IMPanel imPanel;
+
+    public static FilePanel filePanel;
 
     /**
      * 运行监控
      */
-    public static ConsolePanel consolePanel;
+    public static ConsolePanel monitorPanel;
     /**
      *
      */
@@ -117,6 +126,10 @@ public class AppMainWindow {
 
         //初始化 面板
         aboutPanel = new AboutPanel();
+        settingPanel = new SettingPanel(true);
+        imPanel = new IMPanel(true);
+        filePanel = new FilePanel(true);
+
         //TODO other panel init
 
 

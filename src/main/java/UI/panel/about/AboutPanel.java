@@ -1,7 +1,10 @@
-package UI.panel;
+package UI.panel.about;
 
+import UI.AppMainWindow;
 import UI.ConstantsUI;
 import UI.button.NBSIconButton;
+import UI.panel.ContentJLabel;
+import com.nbs.tools.CnstTools;
 import com.nbs.tools.PropertyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -25,6 +29,7 @@ public class AboutPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private static final Logger logger = LoggerFactory.getLogger(AboutPanel.class);
     protected static final String NBS_DOWNLOAD_SITE="https://github.com/W-B-S/nbs-server-test/releases";
+    private static final String UPDATE_LOG_NAME = "update.log.html";
 
     private static NBSIconButton checkUpdateBtn;
 
@@ -99,13 +104,35 @@ public class AboutPanel extends JPanel {
         JLabel logoLabel = new JLabel(ConstantsUI.NBS_ICON);
         shortPanel.add(logoLabel,BorderLayout.WEST);
 
+        //current version
+        JPanel verPanel = new JPanel(false);
+        verPanel.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        verPanel.setLayout(new FlowLayout(FlowLayout.RIGHT,ConstantsUI.MAIN_H_GAP,5));
+
+        JLabel verLabel = new JLabel(PropertyUtil.getProperty("nbs.ui.panel.about.label.ver-name","Current Version :"));
+        verLabel.setFont(ConstantsUI.FONT_LABEL);
+        verLabel.setForeground(ConstantsUI.PANEL_TITILE_COLOR);
+        verLabel.setLayout(new BorderLayout());
+
+        JLabel verValueLabel = new JLabel(PropertyUtil.getProperty("nbs.ui.panel.about.label.ver-value"));
+        verValueLabel.setFont(ConstantsUI.FONT_NORMAL);
+        verValueLabel.setForeground(ConstantsUI.NORMAL_FONT_COLOR);
+
+        verPanel.add(verLabel);
+        verPanel.add(verValueLabel);
+        shortPanel.add(verPanel,BorderLayout.NORTH);
+        //shortTitle.add(verPanel);
+
+
+
         panelCenter.add(shortPanel,BorderLayout.NORTH);
 
         /**
          * contentPanel
          */
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new FlowLayout(FlowLayout.LEFT,ConstantsUI.MAIN_H_GAP,10));
+        contentPanel.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        contentPanel.setLayout(new BorderLayout());
 
         JLabel version = new ContentJLabel("v0.1.11");
 
@@ -113,9 +140,23 @@ public class AboutPanel extends JPanel {
                 "asdfsadfsahdfkhdsaf " +
                 "dsafghsadgfjsagdff /n/r" +
                 "sjdhfjds /n/r");
-        contentPanel.add(version);
-        contentPanel.add(content);
 
+
+    /*    contentPanel.add(version);
+        contentPanel.add(content);*/
+
+        //TODO update history html
+        JEditorPane updateLog = new JEditorPane();
+        updateLog.setEditable(false);
+
+
+        try {
+            updateLog.setPage(PropertyUtil.getProperty("nbs.ui.panel.about.html.ver-log"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            updateLog.setText(e.getMessage());
+        }
+        contentPanel.add(updateLog);
         panelCenter.add(contentPanel,BorderLayout.CENTER);
         return panelCenter;
     }

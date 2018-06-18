@@ -52,6 +52,9 @@ public class StatusPanel extends JPanel {
         this.add(getUpPanel(),BorderLayout.NORTH);
         this.add(getDownPanel(),BorderLayout.SOUTH);
     }
+    public void load(){
+
+    }
 
     /**
      * 构造上部面板

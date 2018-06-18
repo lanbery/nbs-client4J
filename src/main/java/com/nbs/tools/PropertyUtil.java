@@ -55,7 +55,7 @@ public class PropertyUtil {
     /**
      * 配置参数
      */
-    public static final String PKUI_PANEL_STATUS_LABEL = "nbs.ui.panel.status.label";
+
     public static final String PKUI_PANEL_ABOUT_LABEL = "nbs.ui.panel.about.label";
 
 }

@@ -14,7 +14,13 @@ import java.io.File;
  */
 public class CnstTools {
 
+    /**
+     *
+     */
     public final static String PROPS_ROOT_PATH  = ConstantsUI.CURRENT_DIR + File.separator+"config" + File.separator;
 
-
+    /**
+     *
+     */
+    public final static String HTM_ROOT_PATH =  ConstantsUI.CURRENT_DIR + File.separator+"html" + File.separator;
 }

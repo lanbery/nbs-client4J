@@ -80,7 +80,7 @@ public class ConstantsUI {
     public final static Font FONT_TITLE = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,27);
     public final static Font FONT_SUB_TITLE = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,20);
     public final static Font FONT_NORMAL = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,13);
-    public final static Font FONT_RADIO = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,15);
+    public final static Font FONT_LABEL = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,15);
     /**
      *
      */
@@ -123,6 +123,7 @@ public class ConstantsUI {
     /**
      * check version
      */
+
     public final static ImageIcon ICON_CHECK = new ImageIcon(
             AppMainWindow.class.getResource("/icon/checkversion.png"));
     public final static ImageIcon ICON_CHECK_ENABLED = new ImageIcon(

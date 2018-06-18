@@ -89,6 +89,11 @@ public class ToolBarPanel extends JPanel {
                 buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
                 buttonAbout.setIcon(ConstantsUI.ICON_ABOUT);
                 //TODO mianCenter
+                AppMainWindow.mainPanelCenter.removeAll();
+                AppMainWindow.statusPanel.load();
+                AppMainWindow.mainPanelCenter.add(AppMainWindow.statusPanel);
+                AppMainWindow.mainPanelCenter.updateUI();
+
             }
         });
 
@@ -101,6 +106,11 @@ public class ToolBarPanel extends JPanel {
                 buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
                 buttonAbout.setIcon(ConstantsUI.ICON_ABOUT);
                 //
+                AppMainWindow.mainPanelCenter.removeAll();
+                AppMainWindow.filePanel.load();
+                AppMainWindow.mainPanelCenter.add(AppMainWindow.filePanel);
+                AppMainWindow.mainPanelCenter.updateUI();
+
             }
         });
 
@@ -113,6 +123,10 @@ public class ToolBarPanel extends JPanel {
                 buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
                 buttonAbout.setIcon(ConstantsUI.ICON_ABOUT);
                 //
+                AppMainWindow.mainPanelCenter.removeAll();
+                AppMainWindow.imPanel.load();
+                AppMainWindow.mainPanelCenter.add(AppMainWindow.imPanel);
+                AppMainWindow.mainPanelCenter.updateUI();
             }
         });
 
@@ -126,6 +140,10 @@ public class ToolBarPanel extends JPanel {
                 buttonSetting.setIcon(ConstantsUI.ICON_SETTING_ENABLED);
                 buttonAbout.setIcon(ConstantsUI.ICON_ABOUT);
                 //TODO mianCenter
+                AppMainWindow.mainPanelCenter.removeAll();
+                AppMainWindow.settingPanel.load();
+                AppMainWindow.mainPanelCenter.add(AppMainWindow.settingPanel);
+                AppMainWindow.mainPanelCenter.updateUI();
             }
         });
 
@@ -137,8 +155,7 @@ public class ToolBarPanel extends JPanel {
                 buttonIM.setIcon(ConstantsUI.ICON_IM);
                 buttonSetting.setIcon(ConstantsUI.ICON_SETTING);
                 buttonAbout.setIcon(ConstantsUI.ICON_ABOUT_ENABLED);
-                //TODO
-                //
+
                 AppMainWindow.mainPanelCenter.removeAll();
                 AppMainWindow.aboutPanel.loadPanelInfo();
                 AppMainWindow.mainPanelCenter.add(AppMainWindow.aboutPanel);
