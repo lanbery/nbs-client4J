@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -104,11 +105,13 @@ public class StatusPanel extends JPanel {
         try {
             Map m =AppMainWindow.ipfs.id();
             if(m.containsKey("ID"))peerId= (String) m.get("ID");
+            AppMainWindow.PEER_ID = peerId;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ImageIcon icon = new ImageIcon(AVATAR_IMAGE_PATH +"lambor64.png");
-        AvatarIconButton avatar = new AvatarIconButton(icon,"Lamborghini");
+        String nickVal = PropertyUtil.getProperty("nbs.ui.panel.status.default-nickname");
+        ImageIcon icon = new ImageIcon(AVATAR_IMAGE_PATH + PropertyUtil.getProperty("nbs.ui.panel.status.default-avatar"));
+        AvatarIconButton avatar = new AvatarIconButton(icon,nickVal);
         cell11.add(avatar);
 
         firstRow.add(cell11);
@@ -120,11 +123,11 @@ public class StatusPanel extends JPanel {
         WihteBackJPanel peerInfo = new WihteBackJPanel();
         peerInfo.setLayout(new GridLayout(2,1));
         //
-        JLabel nickname = new ContentJLabel("Lamborghini");
+        JLabel nickname = new ContentJLabel(nickVal);
         nickname.setFont(ConstantsUI.FONT_LABEL);
         peerInfo.add(nickname);
 
-        JLabel peerIDLabel = new ContentJLabel("PeerID:"+peerId);
+        JLabel peerIDLabel = new ContentJLabel(PropertyUtil.getProperty("nbs.ui.panel.status.label.peer-id","PeerID:")+peerId);
         peerIDLabel.setFont(ConstantsUI.FONT_NORMAL);
         peerInfo.add(peerIDLabel);
         cell11.add(peerInfo,BorderLayout.CENTER);

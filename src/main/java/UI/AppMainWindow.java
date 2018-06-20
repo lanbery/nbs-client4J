@@ -54,6 +54,10 @@ public class AppMainWindow {
 
     public static FilePanel filePanel;
 
+    public static String PEER_ID = "";
+
+    public static boolean SERVER_STAT = false;
+
     /**
      *
      */
@@ -161,6 +165,7 @@ public class AppMainWindow {
         frame.add(mainPanel);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.pack();
         logger.info("NBS initialized ...");
     }
 
@@ -173,8 +178,13 @@ public class AppMainWindow {
             logger.info(k+"="+v);
         }
         logger.info("ENV ============================<<");
+        try {
+            ipfs = new IPFS(ConfigHelper.getIpfsAddress());
+            SERVER_STAT = true;
+        }catch (Exception e){
+            logger.error("ipfs Server is dead.");
+        }
 
-        ipfs = new IPFS(ConfigHelper.getIpfsAddress());
         try {
             Map map = ipfs.id();
             logger.info(">>>>>>>>>>>>>."+map.get("ID"));
@@ -182,6 +192,7 @@ public class AppMainWindow {
             e.printStackTrace();
         }
     }
+
 
 
 }

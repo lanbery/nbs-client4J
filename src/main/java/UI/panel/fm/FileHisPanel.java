@@ -35,11 +35,16 @@ public class FileHisPanel extends JPanel {
 
 
     public void initialize(){
+        this.setLayout(new FlowLayout(FlowLayout.LEFT,4,0));
         this.setPreferredSize(new Dimension(ConstantsUI.MAIN_WINDOW_WIDTH*3/10,580));
-        this.setBackground(new Color(25,25,25));
+        this.setBackground(ConstantsUI.COMMAND_BACK_COLOR);
         this.setFont(ConstantsUI.FONT_NORMAL);
         this.setForeground(Color.WHITE);
-        this.add(new Label("lskdfkflksakfkasflkdsa"));
+        LogFlowJText timeLabel ,hashLabel;
 
+        timeLabel =  new LogFlowJText("> 2018-06-21 22:30:22 上传nbs.png,成功."+ConstantsUI.CRLF_PANEL);
+        timeLabel.append("hash:.QmWqCZVQLZZM4B38N5NyAcSArbDe7WFntXQ842AbKDU9YB"+ConstantsUI.CRLF_PANEL);
+        //timeLabel.widthWarp((ConstantsUI.MAIN_WINDOW_WIDTH*2/5-6),);
+        this.add(timeLabel);
     }
 }

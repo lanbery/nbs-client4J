@@ -20,6 +20,7 @@ public class ConstantsUI {
      */
     public final static String APP_NAME = "NBS Chain";
     public final static String APP_VERSION = "v0.1";
+    public final static String CRLF_PANEL = "\\r\\n";
     /**
      * 窗口设置
      */
@@ -72,13 +73,17 @@ public class ConstantsUI {
     /**
      * 表格线条背景色
      */
-    public final static Color TABLE_LINE_COLOR = new Color(229, 229, 229);
+    public final static Color TABLE_LINE_COLOR = new Color(48, 129, 129);
 
     /**
      * label 字体颜色
      */
     public final static Color NORMAL_FONT_COLOR = new Color(107,107,107);
 
+    /**
+     * 命令窗口背景色
+     */
+    public final static Color COMMAND_BACK_COLOR = new Color(25,25,25);
     /**
      * @Date    : 2018/6/13 15:19
      * @Author  : lanbery

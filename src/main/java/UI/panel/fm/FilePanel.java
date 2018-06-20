@@ -1,15 +1,24 @@
 package UI.panel.fm;
 
+import UI.AppMainWindow;
 import UI.ConstantsUI;
 import UI.button.NBSIconButton;
 import UI.common.NBSAbstractPanel;
 import UI.common.ToolbarStatsPanel;
 import UI.panel.ContentJLabel;
 import UI.templete.WihteBackJPanel;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.nbs.entity.NbsChainFile;
 import com.nbs.tools.PropertyUtil;
+import io.ipfs.multihash.Multihash;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * @Package : UI.panel.fm
@@ -28,6 +37,9 @@ public class FilePanel extends NBSAbstractPanel {
     private static NBSIconButton lsBtn;
     private static NBSIconButton shareBtn;
     private static NBSIconButton uploadBtn;
+    private static FileShowPanel showPanel;
+
+    private static FileHisPanel hisPanel;
     /**
      *
      */
@@ -43,9 +55,7 @@ public class FilePanel extends NBSAbstractPanel {
     protected void addComponent() {
         ToolbarStatsPanel toolbarStatsPanel = new ToolbarStatsPanel(PKUI_PANEL_FILE_LABEL);
         this.add(toolbarStatsPanel,BorderLayout.NORTH);
-
         this.add(buildCenterPanel(),BorderLayout.CENTER);
-
         this.add(biuldPanelBottom(),BorderLayout.SOUTH);
     }
 
@@ -55,13 +65,10 @@ public class FilePanel extends NBSAbstractPanel {
     private JPanel buildCenterPanel(){
         WihteBackJPanel centerPanel = new WihteBackJPanel();
         centerPanel.setLayout(new BorderLayout());
-        FileShowPanel showPanel = new FileShowPanel();
-
-        FileHisPanel hisPanel = new FileHisPanel();
-
-
-        centerPanel.add(showPanel,BorderLayout.CENTER);
+        showPanel = new FileShowPanel();
+        hisPanel = new FileHisPanel();
         centerPanel.add(hisPanel,BorderLayout.EAST);
+        centerPanel.add(showPanel,BorderLayout.CENTER);
 
         return centerPanel;
     }
@@ -109,6 +116,28 @@ public class FilePanel extends NBSAbstractPanel {
     @Override
     protected void addListener() {
 
+        /**
+         *
+         */
+        lsBtn.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String inHash = hashField.getText();
+                if(StringUtils.isBlank(inHash))return;
+                if(AppMainWindow.ipfs==null)return;
+                try {
+                    Multihash multihash = Multihash.fromBase58(inHash);
+                    Map lsMap = AppMainWindow.ipfs.file.ls(multihash);
+                    NbsChainFile chainFile = JSON.parseObject(JSON.toJSONString(lsMap),new TypeReference<NbsChainFile>(){});
+                    if(chainFile!=null&&chainFile.getMainNbsChainData(inHash)!=null){
+                        showPanel.reload(chainFile.getMainNbsChainData(inHash));
+                    }
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+        });
     }
 
 

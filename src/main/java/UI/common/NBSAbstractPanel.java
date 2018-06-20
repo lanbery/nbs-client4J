@@ -18,6 +18,7 @@ public abstract class NBSAbstractPanel extends JPanel {
         super(isDoubleBuffered);
         init();
         addComponent();
+        addListener();
     }
 
     protected void init(){

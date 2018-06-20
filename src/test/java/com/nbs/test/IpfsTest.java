@@ -5,6 +5,7 @@ import UI.ConstantsUI;
 import UI.panel.ContentJLabel;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.TypeReference;
 import com.nbs.entity.NbsChainFile;
 import io.ipfs.api.IPFS;
 import io.ipfs.api.MerkleNode;
@@ -47,9 +48,9 @@ public class IpfsTest {
     }
 
     public void fileLs(){
-
+        String hash58 = "Qmaj6Kz4eqheWwgKfKoZdtHVHzeDE3mZchPrXWUKnraCcg";
         try {
-            Multihash multihash = Multihash.fromBase58("Qmaj6Kz4eqheWwgKfKoZdtHVHzeDE3mZchPrXWUKnraCcg");
+            Multihash multihash = Multihash.fromBase58(hash58);
             Map lsMap = ipfs.file.ls(multihash);
             Cid cid = Cid.buildCidV0(multihash);
 
@@ -66,10 +67,17 @@ public class IpfsTest {
             }
             show("++++++++++++++++++++====================================================+++++++++++++++++");
             String json = JSON.toJSONString(lsMap,true);
+            show(json);
+            NbsChainFile chainFile = JSON.parseObject(JSON.toJSONString(lsMap),new TypeReference<NbsChainFile>(){});
+
            // JSONArray chainFile = JSON.parseArray(json);
+            if(chainFile!=null&&chainFile.getObjects().size()>0){
+                show(chainFile.getObjects().size()+"");
+                show(chainFile.getMainNbsChainData(hash58).getType());
+            }
 
             //MerkleNode.fromJSON(json);
-            show(json);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

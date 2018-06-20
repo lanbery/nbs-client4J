@@ -16,9 +16,9 @@ import java.util.Map;
 
 public class NbsChainFile  implements Serializable {
     private Map Arguments;
-    private NbsChainData Objects;
+    private Map<String,NbsChainData> Objects;
 
-    public NbsChainFile(Map arguments, NbsChainData objects) {
+    public NbsChainFile(Map arguments, Map<String,NbsChainData> objects) {
         Arguments = arguments;
         Objects = objects;
     }
@@ -31,11 +31,17 @@ public class NbsChainFile  implements Serializable {
         Arguments = arguments;
     }
 
-    public NbsChainData getObjects() {
+    public Map<String, NbsChainData> getObjects() {
         return Objects;
     }
 
-    public void setObjects(NbsChainData objects) {
+    public void setObjects(Map<String, NbsChainData> objects) {
         Objects = objects;
+    }
+
+    public NbsChainData getMainNbsChainData(String hash58){
+        if(hash58==null)return null;
+        return this.Objects.get(hash58);
+
     }
 }
