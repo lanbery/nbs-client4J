@@ -27,9 +27,9 @@ public class NBSIconButton extends JButton {
 
     /**
      * 构造方法
-     * @param normalIcon
-     * @param enabledIcon
-     * @param disabledIcon
+     * @param normalIcon 正常
+     * @param enabledIcon 可用
+     * @param disabledIcon 不可用
      * @param tip
      */
     public NBSIconButton(ImageIcon normalIcon,ImageIcon enabledIcon,ImageIcon disabledIcon,String tip){

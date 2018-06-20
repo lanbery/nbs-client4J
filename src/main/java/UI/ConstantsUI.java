@@ -42,6 +42,11 @@ public class ConstantsUI {
     public final static String PROFILE_ROOT = CURRENT_DIR + File.separator + "profile"+ File.separator;
 
     /**
+     * 图标路径
+     */
+    private static final String BUTTON_ICON_ROOT = "/icon/"+PropertyUtil.getProperty("nbs.button.dir","")+"/";
+
+    /**
      * 主图标
      */
     public final static Image IMAGE_ICON = Toolkit.getDefaultToolkit()
@@ -91,6 +96,8 @@ public class ConstantsUI {
      */
     public final static Font FONT_CPR = new Font(PropertyUtil.getProperty("nbs.ui.font.family"),0,18);
 
+
+
     /**
      * 图标定义
      */
@@ -100,11 +107,27 @@ public class ConstantsUI {
     public final static ImageIcon ICON_STATUS_ENABLED = new ImageIcon(
             AppMainWindow.class.getResource("/icon/status_enabled.png"));
 
+    /**
+     *
+     */
     public final static ImageIcon ICON_FILE = new ImageIcon(
             AppMainWindow.class.getResource("/icon/data.png"));
     public final static ImageIcon ICON_FILE_ENABLED = new ImageIcon(
             AppMainWindow.class.getResource("/icon/data_enabled.png"));
+    public final static ImageIcon ICON_FILE_LS = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"file_ls_normal.png"));
+    public final static ImageIcon ICON_FILE_LS_ENABLED = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"file_ls_enabled.png"));
+    public final static ImageIcon ICON_FILE_LS_DISABLED = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"file_ls_disabled.png"));
 
+    public final static ImageIcon ICON_FILE_SHARE = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"file_share_normal.png"));
+    public final static ImageIcon ICON_FILE_SHARE_ENABLED = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"file_share_enabled.png"));
+    public final static ImageIcon ICON_FILE_SHARE_DISABLED = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"file_share_disabled.png"));
+
+    public final static ImageIcon ICON_UPLOAD = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"upload_normal.png"));
+    public final static ImageIcon ICON_UPLOAD_ENABLED = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"upload_enabled.png"));
+    public final static ImageIcon ICON_UPLOAD_DISABLED = new ImageIcon(AppMainWindow.class.getResource(BUTTON_ICON_ROOT+"upload_disabled.png"));
+    /**
+     *
+     */
     public final static ImageIcon ICON_IM = new ImageIcon(
             AppMainWindow.class.getResource("/icon/im.png"));
     public final static ImageIcon ICON_IM_ENABLED = new ImageIcon(
