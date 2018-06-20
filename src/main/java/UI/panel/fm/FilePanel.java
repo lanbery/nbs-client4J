@@ -44,11 +44,26 @@ public class FilePanel extends NBSAbstractPanel {
         ToolbarStatsPanel toolbarStatsPanel = new ToolbarStatsPanel(PKUI_PANEL_FILE_LABEL);
         this.add(toolbarStatsPanel,BorderLayout.NORTH);
 
+        this.add(buildCenterPanel(),BorderLayout.CENTER);
+
         this.add(biuldPanelBottom(),BorderLayout.SOUTH);
     }
 
-    private void addCenter(){
+    /**
+     *
+     */
+    private JPanel buildCenterPanel(){
+        WihteBackJPanel centerPanel = new WihteBackJPanel();
+        centerPanel.setLayout(new BorderLayout());
+        FileShowPanel showPanel = new FileShowPanel();
 
+        FileHisPanel hisPanel = new FileHisPanel();
+
+
+        centerPanel.add(showPanel,BorderLayout.CENTER);
+        centerPanel.add(hisPanel,BorderLayout.EAST);
+
+        return centerPanel;
     }
 
     /**

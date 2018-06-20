@@ -4,16 +4,16 @@ import UI.AppMainWindow;
 import UI.ConstantsUI;
 import UI.panel.ContentJLabel;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.nbs.entity.NbsChainFile;
 import io.ipfs.api.IPFS;
 import io.ipfs.api.MerkleNode;
 import io.ipfs.api.NamedStreamable;
+import io.ipfs.cid.Cid;
 import io.ipfs.multiaddr.MultiAddress;
 import io.ipfs.multihash.Multihash;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -49,14 +49,26 @@ public class IpfsTest {
     public void fileLs(){
 
         try {
-            Multihash multihash = Multihash.fromBase58("QmSZCdbxjQNs1yYxhe1216fXZbDmZnrzmJLH1FjBynhGca");
+            Multihash multihash = Multihash.fromBase58("Qmaj6Kz4eqheWwgKfKoZdtHVHzeDE3mZchPrXWUKnraCcg");
             Map lsMap = ipfs.file.ls(multihash);
+            Cid cid = Cid.buildCidV0(multihash);
+
+            byte[] bytes = ipfs.dag.get(cid);
+
+            String s = new String(bytes);
+            show(s);
+
+
 
             for(Object k : lsMap.values()){
+                show(""+(k instanceof MerkleNode));
                 show(String.valueOf(k));
             }
             show("++++++++++++++++++++====================================================+++++++++++++++++");
             String json = JSON.toJSONString(lsMap,true);
+           // JSONArray chainFile = JSON.parseArray(json);
+
+            //MerkleNode.fromJSON(json);
             show(json);
         } catch (IOException e) {
             e.printStackTrace();
