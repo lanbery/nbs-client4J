@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * @Package : UI.panel
@@ -28,8 +30,11 @@ public class SettingPanel extends NBSAbstractPanel {
 
     @Override
     protected void addComponent() {
+        //TOP title
         ToolbarStatsPanel toolbarStatsPanel = new ToolbarStatsPanel(PKUI_PANEL_STATUS_LABEL);
         this.add(toolbarStatsPanel,BorderLayout.NORTH);
+        this.add(buildMain(),BorderLayout.CENTER);
+
     }
 
     @Override
@@ -40,5 +45,16 @@ public class SettingPanel extends NBSAbstractPanel {
     @Override
     public void load() {
 
+    }
+
+    private JPanel buildMain(){
+        JPanel center = new JPanel();
+        center.setBackground(ConstantsUI.MAIN_BACK_COLOR);
+        center.setLayout(new BorderLayout());
+
+        JLabel label = new JLabel("ID");
+        JLabel peerID = new JLabel("123");
+
+        return center;
     }
 }

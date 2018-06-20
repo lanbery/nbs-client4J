@@ -6,11 +6,16 @@ import UI.panel.fm.FilePanel;
 import UI.panel.im.IMPanel;
 import UI.panel.monitor.ConsolePanel;
 import UI.panel.setting.SettingPanel;
+import com.nbs.tools.ConfigHelper;
+import io.ipfs.api.IPFS;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * @Package : UI
@@ -50,6 +55,11 @@ public class AppMainWindow {
     public static FilePanel filePanel;
 
     /**
+     *
+     */
+    public static IPFS ipfs = null;
+
+    /**
      * 运行监控
      */
     public static ConsolePanel monitorPanel;
@@ -63,6 +73,7 @@ public class AppMainWindow {
     public static AboutPanel aboutPanel;
 
     public static void main(String[] args){
+
         EventQueue.invokeLater(
                 new Runnable() {
                     @Override
@@ -98,7 +109,7 @@ public class AppMainWindow {
      */
     private void initialize(){
         logger.info("NBS initializing start ...");
-
+        loadEnv();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException
@@ -152,4 +163,25 @@ public class AppMainWindow {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         logger.info("NBS initialized ...");
     }
+
+    private void loadEnv(){
+        Properties props = ConfigHelper.getEnv();
+
+        logger.info("ENV ============================>>");
+        for(String k : props.stringPropertyNames()){
+            String v = props.getProperty(k);
+            logger.info(k+"="+v);
+        }
+        logger.info("ENV ============================<<");
+
+        ipfs = new IPFS(ConfigHelper.getIpfsAddress());
+        try {
+            Map map = ipfs.id();
+            logger.info(">>>>>>>>>>>>>."+map.get("ID"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

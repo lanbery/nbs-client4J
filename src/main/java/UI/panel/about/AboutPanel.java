@@ -1,10 +1,9 @@
 package UI.panel.about;
 
-import UI.AppMainWindow;
 import UI.ConstantsUI;
 import UI.button.NBSIconButton;
 import UI.panel.ContentJLabel;
-import com.nbs.tools.CnstTools;
+import com.nbs.tools.ConfigHelper;
 import com.nbs.tools.PropertyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -28,7 +26,7 @@ import java.io.IOException;
 public class AboutPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private static final Logger logger = LoggerFactory.getLogger(AboutPanel.class);
-    protected static final String NBS_DOWNLOAD_SITE="https://github.com/W-B-S/nbs-server-test/releases";
+    protected static final String NBS_DOWNLOAD_SITE="http://nbsio.net/#prototype";
     private static final String UPDATE_LOG_NAME = "update.log.html";
 
     private static NBSIconButton checkUpdateBtn;
@@ -134,17 +132,6 @@ public class AboutPanel extends JPanel {
         contentPanel.setBackground(ConstantsUI.MAIN_BACK_COLOR);
         contentPanel.setLayout(new BorderLayout());
 
-        JLabel version = new ContentJLabel("v0.1.11");
-
-        JLabel content = new ContentJLabel("asdfkjsafdhkjsadfjsafsadg dsafhdsakjdsafgdsalf " +
-                "asdfsadfsahdfkhdsaf " +
-                "dsafghsadgfjsagdff /n/r" +
-                "sjdhfjds /n/r");
-
-
-    /*    contentPanel.add(version);
-        contentPanel.add(content);*/
-
         //TODO update history html
         JEditorPane updateLog = new JEditorPane();
         updateLog.setEditable(false);
@@ -210,6 +197,8 @@ public class AboutPanel extends JPanel {
                 try {
                     java.net.URI uri = java.net.URI.create(site);
                     java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+                    String v =ConfigHelper.getIpfsAddress();
+                    logger.info(v);
                     if(desktop.isSupported(Desktop.Action.BROWSE)){
                             desktop.browse(uri);
                     }else{

@@ -72,7 +72,6 @@ public class NBSIconButton extends JButton {
         this.setFocusPainted(false);
         this.setContentAreaFilled(false);
         this.setMargin(new Insets(0,0,0,0));
-
     }
 
     /**

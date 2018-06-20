@@ -1,7 +1,6 @@
 package UI.common;
 
 import UI.ConstantsUI;
-
 import javax.swing.*;
 import java.awt.*;
 

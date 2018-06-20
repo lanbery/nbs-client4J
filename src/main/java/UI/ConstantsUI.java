@@ -4,6 +4,7 @@ import com.nbs.tools.PropertyUtil;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 /**
  * @Package : UI
@@ -35,6 +36,10 @@ public class ConstantsUI {
      * 系统当前路径
      */
     public final static String CURRENT_DIR = System.getProperty("user.dir");
+
+    public final static String IPFS_PATH = CURRENT_DIR + File.separator + ".nbs_local"+ File.separator;
+
+    public final static String PROFILE_ROOT = CURRENT_DIR + File.separator + "profile"+ File.separator;
 
     /**
      * 主图标
